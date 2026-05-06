@@ -1,0 +1,62 @@
+<section class="dashboard">
+  <header class="dashboard__header">
+    <div>
+      <h1>User Dashboard</h1>
+      <p>Manage users and monitor role distribution in real time.</p>
+    </div>
+    <button type="button" class="action-btn" (click)="openAddUserModal()">Add User</button>
+  </header>
+
+  <div class="dashboard__content">
+    <article class="card">
+      <div class="card__head">
+        <h2>Users</h2>
+        <input
+          type="text"
+          class="filter-input"
+          placeholder="Filter by name, email, role"
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="applyFilter()"
+        />
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of paginatedUsers; track user.email) {
+              <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="3" class="empty-state">No users found.</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <footer class="pagination">
+        <button type="button" (click)="previousPage()" [disabled]="currentPage === 1">Prev</button>
+        <span>Page {{ currentPage }} / {{ totalPages }}</span>
+        <button type="button" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+      </footer>
+    </article>
+
+    <article class="card chart-card">
+      <h2>User Role Distribution</h2>
+      <div class="chart-container">
+        <canvas #chartCanvas aria-label="User role distribution pie chart"></canvas>
+      </div>
+    </article>
+  </div>
+</section>
+
+<ng-template #modalHost></ng-template>

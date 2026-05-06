@@ -1,0 +1,88 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 73, 128, 0.38);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal {
+  width: min(460px, 100%);
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #d7dce6;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  h2 {
+    margin: 0;
+    color: #1c4980;
+  }
+}
+
+.close-btn {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+}
+
+input,
+select {
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid #c2cad8;
+  padding: 0 12px;
+}
+
+.error {
+  color: #b3261e;
+  margin-top: -4px;
+}
+
+footer {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button {
+  height: 48px;
+  border-radius: 10px;
+  padding: 0 18px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary {
+  background: #1c4980;
+  color: #ffffff;
+}
+
+.secondary {
+  background: #383838;
+  color: #ffffff;
+}
